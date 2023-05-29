@@ -1,25 +1,26 @@
+#pragma once
+
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <Windows.h>
+
 using namespace std;
 
+/*
+    Номер в списке
+    Название фильма
+    Жанр фильма
+    Год выпуска
+    Оценка фильма 
+*/
 
-// Table view:
-// Code | Name | Genre | Release | Rating
-
-// struct Product {
-//     {1, "What's Eating Gilbert Grape", "Drama", 1993, 8.4},
-//     {2, "Se7en", "Triller", 1995, 9.8},
-//     {3, "Fight Club", "Triller", 1999, 8.6},
-//     {4, "American Psycho", "Triller", 2000, 7.1},
-//     {5, "Catch Me If You Can", "Criminal", 2002, 8.9},
-// }
-
-struct Table {
+struct Data {
     int code;
-    char movieName;
-    char genre;
+    string name;
+    string genre;
     int yearRelease;
-    double rating;
+    float rating;
 };
+
+void DataEntry(Data* (&d), int &n);
+void ReadingData(Data* (&d), int& n, string fileName);
