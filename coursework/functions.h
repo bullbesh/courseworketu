@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -12,15 +12,24 @@ using namespace std;
     Модель автомобиля
     Количество лошадиных сил
     Страна производитель
+    Цена автомобиля
 */
 
 struct Data {
-    int code;
-    char mark;
-    char model;
+    char mark[256];
+    char model[256];
     int horsepower;
-    char country;
+    char country[256];
+    float price;
 };
 
 void DataEntry(Data* (&d), int &n);
-void ReadingData(Data* (&d), int& n, string fileName);
+void ReadingData(Data* (&d), int& n, char fileName[256]);
+void Print(Data *d, int n);
+void DataChange(Data* (&d), int n);
+void DeleteData(Data* (&d), int& n);
+void Copy(Data* (&dNew), Data* (&dOld), int n); // копия всех выбранных данных
+void Copy(Data& dNew, Data& dOld); // копия данных элемента
+void AddDate(Data* (&d), int &n);
+void DataSorting(Data* d, int n);
+void DataSaving(Data* d, int n, char fileName[256]);
