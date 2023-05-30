@@ -17,9 +17,11 @@ void DataEntry(Data* (&d), int& n) {
     cin >> n;
 
     d = new Data[n];
+    int x = 0;
 
     for (int i = 0; i < n; i++) {
-        d[i].code = (i + 1);
+        x = i;
+        d[i].code = (x + 1);
 
         cout << "Введите название фильма: ";
         cin >> d[i].name;
