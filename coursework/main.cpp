@@ -45,12 +45,11 @@ int main() {
                 break;
 
             default:
-                cout << "Введены некорректные данные\n";
+                cout << "Введены некорректные данные\n\n";
         }
 
             system("pause");
             system("cls");
             Menu();
-            break;
     }
 }
