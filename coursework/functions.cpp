@@ -23,17 +23,17 @@ void DataEntry(Data* (&d), int& n) {
         x = i;
         d[i].code = (x + 1);
 
-        cout << "Введите название фильма: ";
-        cin >> d[i].name;
+        cout << "Введите марку автомобиля: ";
+        cin >> d[i].mark;
 
-        cout << "Введите жанр фильма: ";
-        cin >> d[i].genre;
+        cout << "Введите модель автомобиля: ";
+        cin >> d[i].model;
 
-        cout << "Введите год выпуска фильма: ";
-        cin >> d[i].yearRelease;
+        cout << "Введите количество лошадиных сил: ";
+        cin >> d[i].horsepower;
 
-        cout << "Введите рейтинг фильма: ";
-        cin >> d[i].rating;
+        cout << "Введите страну, в которой производится автомобиль: ";
+        cin >> d[i].country;
     }
 }
 
@@ -47,10 +47,10 @@ void ReadingData(Data* (&d), int& n, string fileName) {
 
         for (int i = 0; i < n; i++) {
             reading >> d[i].code;
-            reading >> d[i].name;
-            reading >> d[i].genre;
-            reading >> d[i].yearRelease;
-            reading >> d[i].rating;
+            reading >> d[i].mark;
+            reading >> d[i].model;
+            reading >> d[i].horsepower;
+            reading >> d[i].country;
         }
 
         cout << "Данные успешно считаны.\n\n";
