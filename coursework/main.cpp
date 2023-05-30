@@ -1,3 +1,9 @@
+/*
+Table view:
+
+Code | Mark | Model | Horsepower | Country
+*/
+
 #include "functions.h"
 
 
