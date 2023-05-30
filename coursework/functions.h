@@ -8,18 +8,18 @@ using namespace std;
 
 /*
     Номер в списке
-    Название фильма
-    Жанр фильма
-    Год выпуска
-    Оценка фильма 
+    Марка автомобиля
+    Модель автомобиля
+    Количество лошадиных сил
+    Страна производитель
 */
 
 struct Data {
     int code;
-    string name;
-    string genre;
-    int yearRelease;
-    float rating;
+    char mark;
+    char model;
+    int horsepower;
+    char country;
 };
 
 void DataEntry(Data* (&d), int &n);
