@@ -1,7 +1,7 @@
 /*
 Table view:
 
-Code | Mark | Model | Horsepower | Country
+Code | Mark | Model | Horsepower | Country | Price
 */
 
 #include "functions.h"
@@ -10,11 +10,14 @@ Code | Mark | Model | Horsepower | Country
 int _stateMenu;
 void Menu() {
     cout << "Выберите действие:\n";
-    cout << "1 - Открыть файл\n";
-    cout << "2 - Просмотр данных\n";
-    cout << "3 - Записать файл\n";
-    cout << "4 - Записать в новый файл\n";
-    cout << "5 - Выход из программы\n\n> ";
+    cout << "0 - Выход из программы\n";
+    cout << "1 - Ввод данных\n";
+    cout << "2 - Вывод данных\n";
+    cout << "3 - Изменение данных\n";
+    cout << "4 - Удаление данных\n";
+    cout << "5 - Добавление данных\n";
+    cout << "6 - Сортировка данных\n";
+    cout << "7 - Сохранение данных\n\n> ";
     cin >> _stateMenu;
 };
 
@@ -23,12 +26,13 @@ int main() {
     Menu();
 
     int _actions, amountOfData = 0;
-    string fileName;
+    char fileName[256];
 
     Data* d = new Data[amountOfData];
 
-    while (_stateMenu != 5) {
+    while (_stateMenu != 0) {
         switch (_stateMenu) {
+
             case 1:
                 system("cls");
                 cout << "Выберите, как записывать данные? (1 - вручную, 0 - из файла)\n\n> ";
@@ -40,7 +44,7 @@ int main() {
                 }
 
                 else {
-                    cout << "Введите название файла:\n\n>";
+                    cout << "Введите название файла:\n\n> ";
                     cin >> fileName;
                     ReadingData(d, amountOfData, fileName);
                 }
@@ -50,12 +54,104 @@ int main() {
                 Menu();
                 break;
 
-            default:
-                cout << "Введены некорректные данные\n\n";
-        }
+            case 2:
+                system("cls");
+                if (amountOfData != 0) {
+                    Print(d, amountOfData);
+                }
+                else {
+                    cout << "Данные пусты.\n\n";
+                }
 
-            system("pause");
-            system("cls");
-            Menu();
+                system("pause");
+                system("cls");
+                Menu();
+                break;
+            
+            case 3:
+                system("cls");
+
+                if (amountOfData != 0) {
+                    DataChange(d, amountOfData);
+                }
+                else {
+                    cout << "Данные пусты.\n\n";
+                }
+            
+                system("pause");
+                system("cls");
+                Menu();
+                break;
+            
+            case 4:
+                system("cls");
+
+                if (amountOfData != 0) {
+                    DeleteData(d, amountOfData);
+                }
+                else {
+                    cout << "Данные пусты.\n\n";
+                }
+
+                system("pause");
+                system("cls");
+                Menu();
+                break;
+            
+            case 5:
+                system("cls");
+
+                if (amountOfData != 0) {
+                    AddDate(d, amountOfData);
+                    amountOfData++;
+                }
+                else {
+                    cout << "Данные пусты.\n\n";
+                }
+
+                system("pause");
+                system("cls");
+                Menu();
+                break;
+
+            case 6:
+                system("cls");
+
+                if (amountOfData != 0) {
+                    // DataSorting(d, amountOfData);
+                    cout << "Сортировка\n\n";
+                }
+                else {
+                    cout << "Данные пусты.\n\n";
+                }
+
+                system("pause");
+                system("cls");
+                Menu();
+                break;
+            
+            case 7:
+                system("cls");
+
+                cout << "Введите название файла: ";
+                cin >> fileName;
+
+                if (amountOfData != 0) {
+                    DataSaving(d, amountOfData, fileName);
+                }
+                else {
+                    cout << "Данные пусты.\n\n";
+                }
+
+                system("pause");
+                system("cls");
+                Menu();
+                break;
+            
+            default:
+                cout << "Введён неверный номер действия.";
+                break;
+
+        }
     }
 }
