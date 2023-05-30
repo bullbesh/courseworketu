@@ -34,6 +34,7 @@ int main() {
         switch (_stateMenu) {
 
             case 1:
+            // запись, чтение данных
                 system("cls");
                 cout << "Выберите, как записывать данные? (1 - вручную, 0 - из файла)\n\n> ";
                 cin >> _actions;
@@ -55,6 +56,7 @@ int main() {
                 break;
 
             case 2:
+            // вывод данных
                 system("cls");
                 if (amountOfData != 0) {
                     Print(d, amountOfData);
@@ -69,6 +71,7 @@ int main() {
                 break;
             
             case 3:
+            // замена данных
                 system("cls");
 
                 if (amountOfData != 0) {
@@ -84,6 +87,7 @@ int main() {
                 break;
             
             case 4:
+            // удаление данных
                 system("cls");
 
                 if (amountOfData != 0) {
@@ -99,6 +103,7 @@ int main() {
                 break;
             
             case 5:
+            // добавление данных
                 system("cls");
 
                 if (amountOfData != 0) {
@@ -115,6 +120,7 @@ int main() {
                 break;
 
             case 6:
+            // сортировка данных
                 system("cls");
 
                 if (amountOfData != 0) {
@@ -131,6 +137,7 @@ int main() {
                 break;
             
             case 7:
+            // сохранение данных в новый файл
                 system("cls");
 
                 cout << "Введите название файла: ";
