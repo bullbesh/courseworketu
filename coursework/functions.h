@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <iomanip>
 
 using namespace std;
@@ -23,13 +24,13 @@ struct Data {
     float price;
 };
 
-void DataEntry(Data* (&d), int &n);
-void ReadingData(Data* (&d), int& n, char fileName[256]);
-void Print(Data *d, int n);
-void DataChange(Data* (&d), int n);
-void DeleteData(Data* (&d), int& n);
-void Copy(Data* (&dNew), Data* (&dOld), int n); // копия всех выбранных данных
-void Copy(Data& dNew, Data& dOld); // копия данных элемента
-void AddDate(Data* (&d), int &n);
-void DataSorting(Data* d, int n);
-void DataSaving(Data* d, int n, char fileName[256]);
+void entryData(Data* (&d), int &n);
+void readData(Data* (&d), int& n, char filename[256]);
+void printTable(Data *d, int n);
+void changeData(Data* (&d), int n);
+void deleteData(Data* (&d), int& n);
+void copyElement(Data* (&dNew), Data* (&dOld), int n);
+void addData(Data* (&d), int &n);
+void saveData(Data* d, int n, char filename[256]);
+void Search(const Data rest[], int n);
+void Sort(Data* d, int n);
