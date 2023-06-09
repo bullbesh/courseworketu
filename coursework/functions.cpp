@@ -1,7 +1,7 @@
 #include "functions.h"
 
 
-void DataEntry(Data* (&d), int& n) {
+void entryData(Data* (&d), int& n) {
     cout << "Введите количество данных на ввод:\n\n> ";
     cin >> n;
 
@@ -11,10 +11,9 @@ void DataEntry(Data* (&d), int& n) {
     for (int i = 0; i < n; i++) {
 
         cout << "\nBвeдитe марку автомобиля: ";
-        cin >> d[i].mark;
-
+        cin.getline(d[i].mark, 256);
         cout << "Введите модель автомобиля: ";
-        cin >> d[i].model;
+        cin.getline(d[i].model, 256);
 
         cout << "Введите количество лошадиных сил: ";
         cin >> d[i].horsepower;
@@ -24,11 +23,12 @@ void DataEntry(Data* (&d), int& n) {
 
         cout << "Введите цену автомобиля: ";
         cin >> d[i].price;
+        cin.ignore();
     }
 }
 
-void ReadingData(Data* (&d), int& n, char fileName[256]) {
-    ifstream reading(fileName);
+void readData(Data* (&d), int& n, char filename[256]) {
+    ifstream reading(filename);
 
     if (reading) {
         reading >> n;
@@ -43,7 +43,7 @@ void ReadingData(Data* (&d), int& n, char fileName[256]) {
             reading >> d[i].price;
         }
 
-        cout << "Данные успешно считаны.\n\n";
+        cout << "\nДанные успешно считаны.\n\n";
     }
 
     else {
@@ -53,43 +53,87 @@ void ReadingData(Data* (&d), int& n, char fileName[256]) {
     reading.close();
 }
 
-void Print(Data *d, int n) {
-    for (int i = 0; i < n; i++) {
-        cout << "#" << (i + 1) << endl;
-        cout << "Марка: " << d[i].mark << endl;
-        cout << "Модель: " << d[i].model << endl;
-        cout << "HP: " << d[i].horsepower << endl;
-        cout << "Страна производитель: " << d[i].country << endl;
-        cout << "Цена за автомобиль: " << d[i].price << endl;
-
-        cout << "______________________________________________________________________________________\n\n";
-    }
+void printTable(Data* d, int n) {
+	cout << left << setw(20) << "#"
+		<< left << setw(26) << "Марка"
+		<< left << setw(25) << "Модель"
+		<< left << setw(20) << "HP"
+		<< left << setw(35) << "Страна"
+		<< left << setw(3) << "Цена P" << endl;
+	cout << "______________________________________________________________________________________________________________________" << endl;
+	for (int i = 0; i < n; i++) {
+		cout << left << setw(20) << i+1
+			<< left << setw(20) <<  d[i].mark
+			<< left << setw(20) <<  d[i].model
+			<< left << setw(20) <<  d[i].horsepower
+			<< left << setw(29) <<  d[i].country
+			<< left << setw(5) <<  d[i].price << endl;
+		cout << "______________________________________________________________________________________________________________________" << endl;
+	}
 }
 
-void DataChange(Data* (&d), int n) {
+void changeData(Data* (&d), int n) {
     int _n;
+    int selectOption;
+    
+    cout << left << setw(20) << "#"
+        << left << setw(26) << "Марка"
+        << left << setw(25) << "Модель"
+        << left << setw(20) << "HP"
+        << left << setw(35) << "Страна"
+        << left << setw(3) << "Цена P" << endl;
+	cout << "______________________________________________________________________________________________________________________" << endl;
+
+    for (int i = 0; i < n; i++) {
+		cout << left << setw(20) << (i + 1)
+			<< left <<  setw(20) <<  d[i].mark
+			<< left <<  setw(20) <<  d[i].model
+			<< left <<  setw(20) <<  d[i].horsepower
+			<< left <<  setw(29) <<  d[i].country
+			<< left <<  setw(5) <<  d[i].price << endl;
+		cout << "______________________________________________________________________________________________________________________" << endl;
+	}
+    
     cout << "Введите номер элемента (от 1 до " << n << "): ";
     cin >> _n;
     _n--;
 
     system("cls");
+    
+    cout << "1 - Изменить марку автомобиля\n";
+    cout << "2 - Изменить модель автомобиля\n";
+    cout << "3 - Изменить количество лошадиных сил\n";
+    cout << "4 - Изменить страну, в которой производится автомобиль\n";
+    cout << "5 - Изменить цену автомобиля\n";
+    cout << "Введите то, что хотите изменить: ";
+    cin >> selectOption;
 
     if (_n >= 0 && _n < n) {
-        cout << "\nBвeдитe марку автомобиля: ";
-        cin >> d[_n].mark;
-
-        cout << "Введите модель автомобиля: ";
-        cin.getline(d[_n].model, 256);
-
-        cout << "Введите количество лошадиных сил: ";
-        cin >> d[_n].horsepower;
-
-        cout << "Введите страну, в которой производится автомобиль: ";
-        cin >> d[_n].country;
-
-        cout << "Введите цену автомобиля: ";
-        cin >> d[_n].price;
-
+        switch (selectOption) {
+            case 1:
+                cout << "Bвeдитe марку автомобиля: ";
+                cin.getline(d[_n].mark, 128);
+                break;
+            case 2:
+                cout << "Введите модель автомобиля: ";
+                cin.getline(d[_n].model, 128);
+                break;
+            case 3:
+                cout << "Введите количество лошадиных сил: ";
+                cin >> d[_n].horsepower;
+                break;
+            case 4:
+                cout << "Введите страну, в которой производится автомобиль: ";
+                cin >> d[_n].country;
+                break;
+            case 5:
+                cout << "Введите цену автомобиля: ";
+                cin >> d[_n].price;
+                break;
+            default:
+                cout << "Неверный выбор.";
+                break;
+        }
         system("cls");
         cout << "Данные успешно изменены.\n";
     }
@@ -98,8 +142,26 @@ void DataChange(Data* (&d), int n) {
     }
 }
 
-void DeleteData(Data* (&d), int& n) {
+void deleteData(Data* (&d), int& n) {
 	int _n;
+
+    cout << left << setw(20) << "#"
+        << left << setw(26) << "Марка"
+        << left << setw(25) << "Модель"
+        << left << setw(20) << "HP"
+        << left << setw(35) << "Страна"
+        << left << setw(3) << "Цена P" << endl;
+    cout << "______________________________________________________________________________________________________________________" << endl;
+    for (int i = 0; i < n; i++) {
+		cout << left << setw(20) << (i + 1)
+			<< left <<  setw(20) <<  d[i].mark
+			<< left <<  setw(20) <<  d[i].model
+			<< left <<  setw(20) <<  d[i].horsepower
+			<< left <<  setw(29) <<  d[i].country
+			<< left <<  setw(5) <<  d[i].price << endl;
+		cout << "______________________________________________________________________________________________________________________" << endl;
+	}
+
 	cout << "Введите номер элемента (от 1 до " << n << "): ";
 	cin >> _n;
 	_n--;
@@ -109,48 +171,39 @@ void DeleteData(Data* (&d), int& n) {
         int x = 0;
         for (int i = 0; i < n; i++) {
             if (i != _n) {
-                d[x] = buf[i];
+                buf[x] = d[i];
                 x++;
             }
         }
 
-        delete[]buf;
+        delete[] buf;
         d = buf;
         n--;
         system("cls");
-        cout << "Выбранные данные успешно удалены\n";
+        cout << "Выбранные данные успешно удалены.\n";
     }
     else {
         cout << "Номер введён неверно.\n";
     }
-
 }
 
-void Copy(Data* (&dNew), Data* (&dOld), int n) {
+void copyElement(Data* (&dNew), Data* (&dOld), int n) {
 	for (int i = 0; i < n; i++) {
 		dNew[i] = dOld[i];
 	}
 }
 
-// void Copy(Data& dNew, Data& dOld) {
-//     dNew.mark = dOld.mark;
-//     dNew.model = dOld.model;
-//     dNew.horsepower = dOld.horsepower;
-//     dNew.country = dOld.country;
-//     dNew.price = dOld.price;
-// }
-
-void AddDate(Data* (&d), int &n) {
+void addData(Data* (&d), int &n) {
     Data* buf;
     buf = new Data[n];
-    Copy(d, buf, n--);
+    copyElement(buf, d, n);
     n++;
     d = new Data[n];
-    Copy(d, buf, --n);
+    copyElement(d, buf, --n);
     cin.ignore();
 
-    cout << "\nBвeдитe марку автомобиля: ";
-    cin >> d[n].mark;
+    cout << "Bвeдитe марку автомобиля: ";
+    cin.getline(d[n].mark, 256);
 
     cout << "Введите модель автомобиля: ";
     cin.getline(d[n].model, 256);
@@ -163,30 +216,15 @@ void AddDate(Data* (&d), int &n) {
 
     cout << "Введите цену автомобиля: ";
     cin >> d[n].price;
+    cin.ignore();
 
     system("cls");
-    cout << "Данные добавлены.\n\n";
+    cout << "Данные успешно добавлены.\n\n";
     delete[]buf;
 }
 
-// void DataSorting(Data* d, int n) {
-//     Data buf;
-
-//     for (int i = 0; i < n; i++) {
-//         for (int j = i + 1; j < n; j++) {
-//             if (d[i].price > d[j].price) {
-//                 Copy(buf, d[j]);
-//                 Copy(d[j], d[i]);
-//                 Copy(d[i], buf);
-//             }
-//         }
-//     }
-
-//     cout << "Данные отсортированы.\n\n";
-// }
-
-void DataSaving(Data* d, int n, char fileName[256]) {
-    ofstream record(fileName, ios::out);
+void saveData(Data* d, int n, char filename[256]) {
+    ofstream record(filename, ios::out);
 
     if (record) {
         record << n << endl;
@@ -203,7 +241,9 @@ void DataSaving(Data* d, int n, char fileName[256]) {
             else {
                 record << d[i].price;
             }
+
         }
+        cout << "\nФайл с данными успешно создан.\n\n";
     }
     else {
         cout << "Ошибка открытия файла.\n\n";
@@ -211,4 +251,140 @@ void DataSaving(Data* d, int n, char fileName[256]) {
 
     record.close();
 
+}
+
+void Search(const Data rest[], int n) {
+	if (n == 0) {
+		cout << "Нет доступных записей." << endl;
+		return;
+	}
+
+	cout << "Введите название марки для поиска: ";
+	cin.ignore();
+	char searchName[256];
+	cin.getline(searchName, 256);
+	system("cls");
+	bool found = false;
+	for (int i = 0; i < n; i++) {
+		if (strcmp(rest[i].mark, searchName) == 0) {
+			cout << left << setw(20) << "#"
+				<< left << setw(26) << "Марка"
+				<< left << setw(25) << "Модель"
+				<< left << setw(20) << "HP"
+				<< left << setw(35) << "Страна"
+				<< left << setw(3) << "Цена Р" << endl;
+			cout << "______________________________________________________________________________________________________________________" << endl;
+			for (int j = 0; j < n; j++) {
+				if (strcmp(rest[j].mark, searchName) == 0) {
+					cout << left << setw(20) << j + 1
+						<< left << setw(20) << rest[j].mark
+						<< left << setw(20) << rest[j].model
+						<< left << setw(20) << rest[j].horsepower
+						<< left << setw(29) << rest[j].country
+						<< left << setw(5) << rest[j].price << endl;
+					cout << "______________________________________________________________________________________________________________________" << endl;
+				}
+			}
+			found = true;
+		}
+	}
+	system("pause");
+
+	if (!found) {
+		cout << "Запись с указанным названием не найдена." << endl;
+	}
+}
+
+void Sort(Data* d, int n) {
+	if (n == 0) {
+		cout << "Нет доступных записей." << endl;
+		return;
+	}
+	cout << "1 - Сортировка по лошадиным силам" << endl;
+	cout << "2 - Сортировка по цене автомобиля" << endl;
+	int f;
+	cin >> f;
+	if (f == 2) {
+		cout << "Выберите тип сортировки:\n";
+	    cout << "1 - По возрастанию цены\n";
+		cout << "2 - По убыванию цены\n";
+		int c;
+		cin >> c;
+
+		switch (c) {
+		case 1: {
+			for (int i = 0; i < n - 1; i++) {
+				for (int j = 0; j < n - i - 1; j++) {
+					if (d[j].price > d[j + 1].price) {
+						Data temp = d[j];
+						d[j] = d[j + 1];
+						d[j + 1] = temp;
+					}
+				}
+			}
+			cout << "Записи успешно отсортированы по цене в возрастающем порядке." << endl;
+			break;
+		}
+		case 2: {
+			for (int i = 0; i < n - 1; i++) {
+				for (int j = 0; j < n - i - 1; j++) {
+					if (d[j].price < d[j + 1].price) {
+						Data temp = d[j];
+						d[j] = d[j + 1];
+						d[j + 1] = temp;
+					}
+				}
+			}
+			cout << "Записи успешно отсортированы по цене в убывающем порядке." << endl;
+			break;
+		}
+		default:
+			cout << "Некорректный выбор. Сортировка не выполнена." << endl;
+			break;
+		}
+	}
+	else if (f == 1) {
+		cout << "Выберите тип сортировки:\n"
+			<< "1. По возрастанию лошадиных сил\n"
+			<< "2. По убыванию лошадиных сил\n";
+		int c;
+		cin >> c;
+
+		switch (c) {
+		case 1: {
+			for (int i = 0; i < n - 1; i++) {
+				for (int j = 0; j < n - i - 1; j++) {
+					if (d[j].horsepower > d[j + 1].horsepower) {
+						Data temp = d[j];
+						d[j] = d[j + 1];
+						d[j + 1] = temp;
+					}
+				}
+			}
+			cout << "Записи успешно отсортированы по лошадиным силам в возрастающем порядке." << endl;
+			break;
+		}
+		case 2: {
+			for (int i = 0; i < n - 1; i++) {
+				for (int j = 0; j < n - i - 1; j++) {
+					if (d[j].horsepower < d[j + 1].horsepower) {
+						Data temp = d[j];
+						d[j] = d[j + 1];
+						d[j + 1] = temp;
+					}
+				}
+			}
+			cout << "Записи успешно отсортированы по лошадиным силам в убывающем порядке." << endl;
+			break;
+		}
+		default:
+			cout << "Некорректный выбор. Сортировка не выполнена." << endl;
+			break;
+		}
+	}
+	else {
+		cout << "Неверно введен номер действия!" << endl;
+		system("cls");
+		cout <<"Возврат в главное меню" << endl;
+	}
 }
