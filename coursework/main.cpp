@@ -7,8 +7,8 @@ Code | Mark | Model | Horsepower | Country | Price
 #include "functions.h"
 
 
-int _stateMenu;
-void Menu() {
+int userChoice;
+void generalMenu() {
     cout << "Выберите действие:\n";
     cout << "0 - Выход из программы\n";
     cout << "1 - Ввод данных\n";
@@ -17,21 +17,22 @@ void Menu() {
     cout << "4 - Удаление данных\n";
     cout << "5 - Добавление данных\n";
     cout << "6 - Сортировка данных\n";
-    cout << "7 - Сохранение данных\n\n> ";
-    cin >> _stateMenu;
+    cout << "7 - Сохранение данных\n";
+    cout << "8 - Поиск данных\n\n> ";
+    cin >> userChoice;
 };
 
 int main() {
     system("chcp 65001");
-    Menu();
+    generalMenu();
 
-    int _actions, amountOfData = 0;
-    char fileName[256];
+    int _actions, dataAmount = 0;
+    char filename[256];
 
-    Data* d = new Data[amountOfData];
+    Data* d = new Data[dataAmount];
 
-    while (_stateMenu != 0) {
-        switch (_stateMenu) {
+    while (userChoice != 0) {
+        switch (userChoice) {
 
             case 1:
             // запись, чтение данных
@@ -41,25 +42,25 @@ int main() {
                 system("cls");
 
                 if (_actions == 1) {
-                    DataEntry(d, amountOfData);
+                    entryData(d, dataAmount);
                 }
 
                 else {
                     cout << "Введите название файла:\n\n> ";
-                    cin >> fileName;
-                    ReadingData(d, amountOfData, fileName);
+                    cin >> filename;
+                    readData(d, dataAmount, filename);
                 }
 
                 system("pause");
                 system("cls");
-                Menu();
+                generalMenu();
                 break;
 
             case 2:
             // вывод данных
                 system("cls");
-                if (amountOfData != 0) {
-                    Print(d, amountOfData);
+                if (dataAmount != 0) {
+                    printTable(d, dataAmount);
                 }
                 else {
                     cout << "Данные пусты.\n\n";
@@ -67,15 +68,15 @@ int main() {
 
                 system("pause");
                 system("cls");
-                Menu();
+                generalMenu();
                 break;
             
             case 3:
             // замена данных
                 system("cls");
 
-                if (amountOfData != 0) {
-                    DataChange(d, amountOfData);
+                if (dataAmount != 0) {
+                    changeData(d, dataAmount);
                 }
                 else {
                     cout << "Данные пусты.\n\n";
@@ -83,15 +84,15 @@ int main() {
             
                 system("pause");
                 system("cls");
-                Menu();
+                generalMenu();
                 break;
             
             case 4:
             // удаление данных
                 system("cls");
 
-                if (amountOfData != 0) {
-                    DeleteData(d, amountOfData);
+                if (dataAmount != 0) {
+                    deleteData(d, dataAmount);
                 }
                 else {
                     cout << "Данные пусты.\n\n";
@@ -99,16 +100,16 @@ int main() {
 
                 system("pause");
                 system("cls");
-                Menu();
+                generalMenu();
                 break;
             
             case 5:
             // добавление данных
                 system("cls");
 
-                if (amountOfData != 0) {
-                    AddDate(d, amountOfData);
-                    amountOfData++;
+                if (dataAmount != 0) {
+                    addData(d, dataAmount);
+                    dataAmount++;
                 }
                 else {
                     cout << "Данные пусты.\n\n";
@@ -116,16 +117,15 @@ int main() {
 
                 system("pause");
                 system("cls");
-                Menu();
+                generalMenu();
                 break;
 
             case 6:
             // сортировка данных
                 system("cls");
 
-                if (amountOfData != 0) {
-                    // DataSorting(d, amountOfData);
-                    cout << "Сортировка\n\n";
+                if (dataAmount != 0) {
+                    Sort(d, dataAmount);
                 }
                 else {
                     cout << "Данные пусты.\n\n";
@@ -133,7 +133,7 @@ int main() {
 
                 system("pause");
                 system("cls");
-                Menu();
+                generalMenu();
                 break;
             
             case 7:
@@ -141,10 +141,10 @@ int main() {
                 system("cls");
 
                 cout << "Введите название файла: ";
-                cin >> fileName;
+                cin >> filename;
 
-                if (amountOfData != 0) {
-                    DataSaving(d, amountOfData, fileName);
+                if (dataAmount != 0) {
+                    saveData(d, dataAmount, filename);
                 }
                 else {
                     cout << "Данные пусты.\n\n";
@@ -152,7 +152,23 @@ int main() {
 
                 system("pause");
                 system("cls");
-                Menu();
+                generalMenu();
+                break;
+            
+            case 8:
+            // поиск в таблице по марке автомобиля
+                system("cls");
+
+                if (dataAmount != 0) {
+                    Search(d, dataAmount);
+                }
+                else {
+                    cout << "Данные пусты.\n\n";
+                }
+            
+                system("pause");
+                system("cls");
+                generalMenu();
                 break;
             
             default:
@@ -161,4 +177,7 @@ int main() {
 
         }
     }
+
+    cout << "\nЗавершение работы программы.\n\n";
+    system("pause");
 }
