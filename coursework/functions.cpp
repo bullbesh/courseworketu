@@ -222,7 +222,6 @@ void addData(Data* (&d), int &n) {
 
     cout << "Введите страну, в которой производится автомобиль: ";
 	cin.getline(d[n].country, 256);
-    // cin >> d[n].country;
 	cout << "\n";
 
     cout << "Введите цену автомобиля: ";
