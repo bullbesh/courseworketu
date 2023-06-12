@@ -202,20 +202,28 @@ void addData(Data* (&d), int &n) {
     copyElement(d, buf, --n);
     cin.ignore();
 
+	cout << "~ Ввод новых данных\n\n";
+
     cout << "Bвeдитe марку автомобиля: ";
     cin.getline(d[n].mark, 256);
+	cout << "\n";
 
     cout << "Введите модель автомобиля: ";
     cin.getline(d[n].model, 256);
+	cout << "\n";
 
     cout << "Введите количество лошадиных сил: ";
     cin >> d[n].horsepower;
+	cout << "\n";
 
     cout << "Введите страну, в которой производится автомобиль: ";
     cin >> d[n].country;
+	cout << "\n";
 
     cout << "Введите цену автомобиля: ";
     cin >> d[n].price;
+	cout << "\n";
+
     cin.ignore();
 
     system("cls");
