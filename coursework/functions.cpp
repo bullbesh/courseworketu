@@ -6,20 +6,23 @@ void entryData(Data* (&d), int& n) {
     cin >> n;
 
     d = new Data[n];
-    cin.ignore();
 
     for (int i = 0; i < n; i++) {
 
+		cin.ignore();
+
         cout << "\nBвeдитe марку автомобиля: ";
         cin.getline(d[i].mark, 256);
+
         cout << "Введите модель автомобиля: ";
         cin.getline(d[i].model, 256);
 
         cout << "Введите количество лошадиных сил: ";
         cin >> d[i].horsepower;
+		cin.ignore();
 
         cout << "Введите страну, в которой производится автомобиль: ";
-        cin >> d[i].country;
+		cin.getline(d[i].country, 256);
 
         cout << "Введите цену автомобиля: ";
         cin >> d[i].price;
@@ -124,7 +127,7 @@ void changeData(Data* (&d), int n) {
                 break;
             case 4:
                 cout << "Введите страну, в которой производится автомобиль: ";
-                cin >> d[_n].country;
+                cin.getline(d[_n].country, 128);
                 break;
             case 5:
                 cout << "Введите цену автомобиля: ";
@@ -202,7 +205,7 @@ void addData(Data* (&d), int &n) {
     copyElement(d, buf, --n);
     cin.ignore();
 
-	cout << "~ Ввод новых данных\n\n";
+	cout << "~ Ввод новых данных (введённая информация добавляется в конец таблицы)\n\n";
 
     cout << "Bвeдитe марку автомобиля: ";
     cin.getline(d[n].mark, 256);
@@ -215,16 +218,16 @@ void addData(Data* (&d), int &n) {
     cout << "Введите количество лошадиных сил: ";
     cin >> d[n].horsepower;
 	cout << "\n";
+	cin.ignore();
 
     cout << "Введите страну, в которой производится автомобиль: ";
-    cin >> d[n].country;
+	cin.getline(d[n].country, 256);
+    // cin >> d[n].country;
 	cout << "\n";
 
     cout << "Введите цену автомобиля: ";
     cin >> d[n].price;
 	cout << "\n";
-
-    cin.ignore();
 
     system("cls");
     cout << "Данные успешно добавлены.\n\n";
