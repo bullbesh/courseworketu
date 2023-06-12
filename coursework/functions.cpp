@@ -263,7 +263,7 @@ void saveData(Data* d, int n, char filename[256]) {
 
 }
 
-void Search(const Data rest[], int n) {
+void searchData(const Data rest[], int n) {
 	if (n == 0) {
 		cout << "Нет доступных записей." << endl;
 		return;

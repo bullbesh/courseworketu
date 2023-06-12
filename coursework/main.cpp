@@ -160,7 +160,7 @@ int main() {
                 system("cls");
 
                 if (dataAmount != 0) {
-                    Search(d, dataAmount);
+                    searchData(d, dataAmount);
                 }
                 else {
                     cout << "Данные пусты.\n\n";

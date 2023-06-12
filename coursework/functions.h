@@ -32,5 +32,5 @@ void deleteData(Data* (&d), int& n);
 void copyElement(Data* (&dNew), Data* (&dOld), int n);
 void addData(Data* (&d), int &n);
 void saveData(Data* d, int n, char filename[256]);
-void Search(const Data rest[], int n);
+void searchData(const Data rest[], int n);
 void Sort(Data* d, int n);
