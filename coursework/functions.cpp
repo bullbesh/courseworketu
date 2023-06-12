@@ -305,7 +305,7 @@ void searchData(const Data rest[], int n) {
 	}
 }
 
-void Sort(Data* d, int n) {
+void sortData(Data* d, int n) {
 	if (n == 0) {
 		cout << "Нет доступных записей." << endl;
 		return;

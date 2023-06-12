@@ -125,7 +125,7 @@ int main() {
                 system("cls");
 
                 if (dataAmount != 0) {
-                    Sort(d, dataAmount);
+                    sortData(d, dataAmount);
                 }
                 else {
                     cout << "Данные пусты.\n\n";
