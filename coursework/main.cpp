@@ -172,7 +172,11 @@ int main() {
                 break;
             
             default:
-                cout << "Введён неверный номер действия.";
+                system("cls");
+                cout << "Введён неверный номер действия.\n\n";
+                system("pause");
+                system("cls");
+                generalMenu();
                 break;
 
         }
