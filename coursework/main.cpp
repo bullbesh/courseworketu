@@ -9,7 +9,7 @@ Code | Mark | Model | Horsepower | Country | Price
 
 int userChoice;
 void generalMenu() {
-    cout << "Выберите действие:\n";
+    cout << "Выберите действие:\n\n";
     cout << "0 - Выход из программы\n";
     cout << "1 - Ввод данных\n";
     cout << "2 - Вывод данных\n";
@@ -24,6 +24,11 @@ void generalMenu() {
 
 int main() {
     system("chcp 65001");
+    system("cls");
+
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+    cout << "~ СУБД.\n\nЕсли у Вас есть вопросы или предложения, добро пожаловать в репозиторий проекта:\nhttps://github.com/bullbesh/courseworketu\n\n";    
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
     generalMenu();
 
     int _actions, dataAmount = 0;
