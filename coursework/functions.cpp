@@ -63,7 +63,7 @@ void printTable(Data* d, int n) {
 		<< left << setw(11) << "HP"
 		<< left << setw(21) << "Страна"
 		<< left << setw(3) << "Цена P";
-	cout << "\n______________________________________________________________________________________________________________________\n";
+	cout << "\n___________________________________________________________________\n";
 	for (int i = 0; i < n; i++) {
 		cout << left << setw(5) << i+1
 			<< left << setw(14) <<  d[i].mark
@@ -71,7 +71,7 @@ void printTable(Data* d, int n) {
 			<< left << setw(11) <<  d[i].horsepower
 			<< left << setw(15) <<  d[i].country
 			<< left << setw(5) <<  d[i].price;
-		cout << "\n______________________________________________________________________________________________________________________\n";
+		cout << "\n___________________________________________________________________\n";
 	}
 }
 
@@ -79,22 +79,22 @@ void changeData(Data* (&d), int n) {
     int _n;
     int selectOption;
     
-    cout << left << setw(20) << "#"
-        << left << setw(26) << "Марка"
-        << left << setw(25) << "Модель"
-        << left << setw(20) << "HP"
-        << left << setw(35) << "Страна"
+    cout << left << setw(5) << "#"
+        << left << setw(19) << "Марка"
+        << left << setw(21) << "Модель"
+        << left << setw(11) << "HP"
+        << left << setw(21) << "Страна"
         << left << setw(3) << "Цена P";
-	cout << "\n______________________________________________________________________________________________________________________\n";
+	cout << "\n___________________________________________________________________\n";
 
     for (int i = 0; i < n; i++) {
-		cout << left << setw(20) << (i + 1)
-			<< left <<  setw(20) <<  d[i].mark
-			<< left <<  setw(20) <<  d[i].model
-			<< left <<  setw(20) <<  d[i].horsepower
-			<< left <<  setw(29) <<  d[i].country
-			<< left <<  setw(5) <<  d[i].price;
-		cout << "\n______________________________________________________________________________________________________________________\n";
+		cout << left << setw(5) << (i + 1)
+			<< left <<  setw(14) <<  d[i].mark
+			<< left <<  setw(15) <<  d[i].model
+			<< left <<  setw(11) <<  d[i].horsepower
+			<< left <<  setw(15) <<  d[i].country
+			<< left <<  setw(3) <<  d[i].price;
+		cout << "\n___________________________________________________________________\n";
 	}
     
     cout << "Введите номер элемента (от 1 до " << n << "): ";
@@ -148,21 +148,21 @@ void changeData(Data* (&d), int n) {
 void deleteData(Data* (&d), int& n) {
 	int _n;
 
-    cout << left << setw(20) << "#"
-        << left << setw(26) << "Марка"
-        << left << setw(25) << "Модель"
-        << left << setw(20) << "HP"
-        << left << setw(35) << "Страна"
+    cout << left << setw(5) << "#"
+        << left << setw(19) << "Марка"
+        << left << setw(21) << "Модель"
+        << left << setw(11) << "HP"
+        << left << setw(21) << "Страна"
         << left << setw(3) << "Цена P";
-    cout << "\n______________________________________________________________________________________________________________________\n";
+    cout << "\n___________________________________________________________________\n";
     for (int i = 0; i < n; i++) {
-		cout << left << setw(20) << (i + 1)
-			<< left <<  setw(20) <<  d[i].mark
-			<< left <<  setw(20) <<  d[i].model
-			<< left <<  setw(20) <<  d[i].horsepower
-			<< left <<  setw(29) <<  d[i].country
-			<< left <<  setw(5) <<  d[i].price;
-		cout << "\n______________________________________________________________________________________________________________________\n";
+		cout << left << setw(5) << (i + 1)
+			<< left <<  setw(14) <<  d[i].mark
+			<< left <<  setw(15) <<  d[i].model
+			<< left <<  setw(11) <<  d[i].horsepower
+			<< left <<  setw(15) <<  d[i].country
+			<< left <<  setw(3) <<  d[i].price;
+		cout << "\n___________________________________________________________________\n";
 	}
 
 	cout << "Введите номер элемента (от 1 до " << n << "): ";
@@ -277,22 +277,22 @@ void searchData(const Data rest[], int n) {
 	bool found = false;
 	for (int i = 0; i < n; i++) {
 		if (strcmp(rest[i].mark, searchName) == 0) {
-			cout << left << setw(20) << "#"
-				<< left << setw(26) << "Марка"
-				<< left << setw(25) << "Модель"
-				<< left << setw(20) << "HP"
-				<< left << setw(35) << "Страна"
+			cout << left << setw(5) << "#"
+				<< left << setw(19) << "Марка"
+				<< left << setw(21) << "Модель"
+				<< left << setw(11) << "HP"
+				<< left << setw(21) << "Страна"
 				<< left << setw(3) << "Цена Р";
-			cout << "\n______________________________________________________________________________________________________________________\n";
+			cout << "\n___________________________________________________________________\n";
 			for (int j = 0; j < n; j++) {
 				if (strcmp(rest[j].mark, searchName) == 0) {
-					cout << left << setw(20) << j + 1
-						<< left << setw(20) << rest[j].mark
-						<< left << setw(20) << rest[j].model
-						<< left << setw(20) << rest[j].horsepower
-						<< left << setw(29) << rest[j].country
-						<< left << setw(5) << rest[j].price;
-					cout << "\n______________________________________________________________________________________________________________________\n";
+					cout << left << setw(5) << j + 1
+						<< left << setw(14) << rest[j].mark
+						<< left << setw(15) << rest[j].model
+						<< left << setw(11) << rest[j].horsepower
+						<< left << setw(15) << rest[j].country
+						<< left << setw(3) << rest[j].price;
+					cout << "\n___________________________________________________________________\n";
 				}
 			}
 			found = true;
