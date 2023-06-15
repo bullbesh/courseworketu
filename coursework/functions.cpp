@@ -57,19 +57,19 @@ void readData(Data* (&d), int& n, char filename[256]) {
 }
 
 void printTable(Data* d, int n) {
-	cout << left << setw(20) << "#"
-		<< left << setw(26) << "Марка"
-		<< left << setw(25) << "Модель"
-		<< left << setw(20) << "HP"
-		<< left << setw(35) << "Страна"
+	cout << left << setw(5) << "#"
+		<< left << setw(19) << "Марка"
+		<< left << setw(21) << "Модель"
+		<< left << setw(11) << "HP"
+		<< left << setw(21) << "Страна"
 		<< left << setw(3) << "Цена P";
 	cout << "\n______________________________________________________________________________________________________________________\n";
 	for (int i = 0; i < n; i++) {
-		cout << left << setw(20) << i+1
-			<< left << setw(20) <<  d[i].mark
-			<< left << setw(20) <<  d[i].model
-			<< left << setw(20) <<  d[i].horsepower
-			<< left << setw(29) <<  d[i].country
+		cout << left << setw(5) << i+1
+			<< left << setw(14) <<  d[i].mark
+			<< left << setw(15) <<  d[i].model
+			<< left << setw(11) <<  d[i].horsepower
+			<< left << setw(15) <<  d[i].country
 			<< left << setw(5) <<  d[i].price;
 		cout << "\n______________________________________________________________________________________________________________________\n";
 	}
