@@ -17,8 +17,8 @@ void generalMenu() {
     cout << "4 - Удаление данных\n";
     cout << "5 - Добавление данных\n";
     cout << "6 - Сортировка данных\n";
-    cout << "7 - Сохранение данных\n";
-    cout << "8 - Поиск данных\n\n> ";
+    cout << "7 - Поиск данных\n";
+    cout << "8 - Сохранение данных\n\n> ";
     cin >> userChoice;
 };
 
@@ -142,6 +142,22 @@ int main() {
                 break;
             
             case 7:
+            // поиск в таблице по марке автомобиля
+                system("cls");
+
+                if (dataAmount != 0) {
+                    searchData(d, dataAmount);
+                }
+                else {
+                    cout << "Данные пусты.\n\n";
+                }
+            
+                system("pause");
+                system("cls");
+                generalMenu();
+                break;
+
+            case 8:
             // сохранение данных в новый файл
                 system("cls");
 
@@ -155,22 +171,6 @@ int main() {
                     cout << "Данные пусты.\n\n";
                 }
 
-                system("pause");
-                system("cls");
-                generalMenu();
-                break;
-            
-            case 8:
-            // поиск в таблице по марке автомобиля
-                system("cls");
-
-                if (dataAmount != 0) {
-                    searchData(d, dataAmount);
-                }
-                else {
-                    cout << "Данные пусты.\n\n";
-                }
-            
                 system("pause");
                 system("cls");
                 generalMenu();
