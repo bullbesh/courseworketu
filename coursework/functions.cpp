@@ -78,24 +78,8 @@ void printTable(Data* d, int n) {
 void changeData(Data* (&d), int n) {
     int _n;
     int selectOption;
-    
-    cout << left << setw(5) << "#"
-        << left << setw(19) << "Марка"
-        << left << setw(21) << "Модель"
-        << left << setw(11) << "HP"
-        << left << setw(21) << "Страна"
-        << left << setw(3) << "Цена P";
-	cout << "\n___________________________________________________________________\n";
 
-    for (int i = 0; i < n; i++) {
-		cout << left << setw(5) << (i + 1)
-			<< left <<  setw(14) <<  d[i].mark
-			<< left <<  setw(15) <<  d[i].model
-			<< left <<  setw(11) <<  d[i].horsepower
-			<< left <<  setw(15) <<  d[i].country
-			<< left <<  setw(3) <<  d[i].price;
-		cout << "\n___________________________________________________________________\n";
-	}
+	printTable(d, n);
     
     cout << "Введите номер элемента (от 1 до " << n << "): ";
     cin >> _n;
@@ -148,22 +132,7 @@ void changeData(Data* (&d), int n) {
 void deleteData(Data* (&d), int& n) {
 	int _n;
 
-    cout << left << setw(5) << "#"
-        << left << setw(19) << "Марка"
-        << left << setw(21) << "Модель"
-        << left << setw(11) << "HP"
-        << left << setw(21) << "Страна"
-        << left << setw(3) << "Цена P";
-    cout << "\n___________________________________________________________________\n";
-    for (int i = 0; i < n; i++) {
-		cout << left << setw(5) << (i + 1)
-			<< left <<  setw(14) <<  d[i].mark
-			<< left <<  setw(15) <<  d[i].model
-			<< left <<  setw(11) <<  d[i].horsepower
-			<< left <<  setw(15) <<  d[i].country
-			<< left <<  setw(3) <<  d[i].price;
-		cout << "\n___________________________________________________________________\n";
-	}
+    printTable(d, n);
 
 	cout << "Введите номер элемента (от 1 до " << n << "): ";
 	cin >> _n;
