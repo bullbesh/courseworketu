@@ -261,16 +261,15 @@ void searchData(const Data rest[], int n) {
 						<< left << setw(11) << rest[j].horsepower
 						<< left << setw(15) << rest[j].country
 						<< left << setw(3) << rest[j].price;
-					cout << "\n___________________________________________________________________\n";
+					cout << "\n___________________________________________________________________\n\n";
 				}
 			}
 			found = true;
 		}
 	}
-	system("pause");
 
 	if (!found) {
-		cout << "Запись с указанным названием не найдена.\n";
+		cout << "Запись с указанным названием не найдена.\n\n";
 	}
 }
 
@@ -299,7 +298,7 @@ void sortData(Data* d, int n) {
 
 		switch (c) {
 		case 1: {
-			for (int i = 0; i < n - 1; i++) {
+			for (int i = 0; i < n - 1; i	++) {
 				for (int j = 0; j < n - i - 1; j++) {
 					if (d[j].price > d[j + 1].price) {
 						Data temp = d[j];
