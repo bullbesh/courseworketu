@@ -298,7 +298,7 @@ void sortData(Data* d, int n) {
 
 		switch (c) {
 		case 1: {
-			for (int i = 0; i < n - 1; i	++) {
+			for (int i = 0; i < n - 1; i++) {
 				for (int j = 0; j < n - i - 1; j++) {
 					if (d[j].price > d[j + 1].price) {
 						Data temp = d[j];
